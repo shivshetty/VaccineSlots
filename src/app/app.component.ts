@@ -37,7 +37,7 @@ export class AppComponent implements AfterViewChecked{
       });
     
       let dte=new Date();
-      
+      debugger;
       this.dateList=[new Date()];
       for (let i = 1; i < 7; i++) {        
       this.dateList[i]=new Date(dte.setDate(dte.getDate()+1));
