@@ -20,7 +20,7 @@
     </div>
     <div class="mobile-scroll">
         <div class="dates">
-            <a (click)="clicked = item;getNext(item)" [class.active]="clicked === item" *ngFor="let item of dateList">{{item| date:'EEE, MMM d'}}</a>
+            <a (click)="clicked = item;getNext(item)" [class.active]="clicked === item" *ngFor="let item of dateList">{{item| date:'E, MMM d'}}</a>
         </div>
     </div>
     <div class="fixedAge" #myIdentifier>
