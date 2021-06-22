@@ -341,10 +341,26 @@
             font-weight: normal;
         }
         
-        .slotList .singleSlot .allVaccine .vaccine h4:empty:before {
+        .slotList .singleSlot .allVaccine .vaccine h4:empty:after {
             content: "Free";
-            color: green;
+            color: white;
             font-weight: bold;
+            background-color: red;
+            padding: 0 10px 0 17px;
+            border-radius: 8px 4px 4px 8px;
+            margin-left: -5px;
+        }
+        
+        .slotList .singleSlot .allVaccine .vaccine h4:empty:before {
+            content: "";
+            border-radius: 50%;
+            height: 6px;
+            width: 6px;
+            display: inline-block;
+            background-color: white;
+            position: relative;
+            right: -7px;
+            top: -2px;
         }
         
         .slotList .singleSlot .footer {
