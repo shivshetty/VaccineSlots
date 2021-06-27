@@ -32,7 +32,6 @@ export class AppComponent implements AfterViewChecked{
       slotDate:new Date()     
     });
     
-
     this.fetchSlots.getStates().subscribe(data=>{
       this.stateList=data;
     });
@@ -42,14 +41,12 @@ export class AppComponent implements AfterViewChecked{
      for (let i = 1; i < 7; i++) {        
      this.dateList[i]=new Date(dte.setDate(dte.getDate()+1));
      } 
-     this.clicked=this.dateList[0];    
-     debugger;
+     this.clicked=this.dateList[0];         
      this.getDistrictByState(this.selectedState);
      
   }
 
-  getDistrictByState(stateid=21){
-    debugger;
+  getDistrictByState(stateid=21){    
     this.fetchSlots.getDistricts(stateid).subscribe(data=>{            
         this.districtList=data;
         if(stateid!=21){
@@ -70,8 +67,7 @@ export class AppComponent implements AfterViewChecked{
     });
   }
 
-  onSubmit(formData:any) {
-    //debugger;
+  onSubmit(formData:any) {    
     var slotDate = formData['slotDate'];    
     slotDate = formatDate(slotDate,'dd-MM-yyyy','en');
     //alert(slotDate);
