@@ -1,7 +1,9 @@
-<h1 class="pageTitle" >
-    <select [(ngModel)]="selectedState" name="" id="" (change)="stateChange()" class="districtName" >       
-        <option *ngFor="let st of stateList.states" value={{st.state_id}}>{{st.state_name}}</option>
+<h1 class="pageTitle">
+    Vaccination Slots Available In <br />
+    <select [(ngModel)]="selectedState" name="" id="" (change)="stateChange()" class="stateName">
+    <option *ngFor="let st of stateList.states" value={{st.state_id}}>{{st.state_name}}</option>
     </select>
+    <span class="seperate">-</span>
     <select [(ngModel)]="selectedDist" name="" id="" (change)="distChange()" class="districtName" *ngIf="selectedState==21">
         <option value="392">Thane</option>
         <option value="395">Mumbai</option>
@@ -14,7 +16,7 @@
     <select [(ngModel)]="selectedDist" name="" id="" (change)="distChange()" class="districtName" *ngIf="selectedState!=21">       
         <option *ngFor="let dist of districtList.districts" value={{dist.district_id}}>{{dist.district_name}}</option>
     </select>
-    <br /> Vaccination Slot Availability</h1>
+</h1>
 <div class="container">
     <div class="top-panel">
         <input class="search" type="text" placeholder="Pincode/Name/Address" id="txtSearch1" [(ngModel)]="searchText" />
