@@ -9,6 +9,11 @@ export class VaccinesService {
 
   constructor(private http:HttpClient) { }
 
+  getStates(){
+    let url ="https://cdn-api.co-vin.in/api/v2/admin/location/states";
+    return this.http.get(url);
+  }
+
   getDistricts(stateid:number=21){   
     console.warn(stateid)
       let url='https://cdn-api.co-vin.in/api/v2/admin/location/districts/'+stateid;

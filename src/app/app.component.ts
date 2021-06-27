@@ -22,36 +22,54 @@ export class AppComponent implements AfterViewChecked{
   dateList:any[];
   clicked:any="";
   districtList:any;
+  stateList:any;
   selectedDist:string="392";
+  selectedState:number=21;
   age:string="0";
 
   constructor(private fetchSlots :VaccinesService,private formBuilder: FormBuilder)  {
     this.formGroup=this.formBuilder.group({
       slotDate:new Date()     
     });
-
-      this.fetchSlots.getDistricts().subscribe(data=>{
-        //console.warn(data);
-          this.districtList=data;
-          //console.warn(this.districtList);
-      });
     
-      let dte=new Date();
-      this.dateList=[new Date()];
-      for (let i = 1; i < 7; i++) {        
-      this.dateList[i]=new Date(dte.setDate(dte.getDate()+1));
-      }
 
-      this.clicked=this.dateList[0];    
+    this.fetchSlots.getStates().subscribe(data=>{
+      this.stateList=data;
+    });
 
-      this.fetchSlots.getSpecData(this.selectedDist).subscribe(data=>{
-        //console.warn(data);
-        this.slots=this.ReturnNonZeroes(data);        
-        this.empty=this.ReturnEmpty(data);    
-        this.slots= this.slots.sort((a:any,b:any)=>a.center_id>b.center_id?1:-1)              
-        //this.slot=this.alldata.sessions
-      });
+    let dte=new Date();
+     this.dateList=[new Date()];
+     for (let i = 1; i < 7; i++) {        
+     this.dateList[i]=new Date(dte.setDate(dte.getDate()+1));
+     } 
+     this.clicked=this.dateList[0];    
+     debugger;
+     this.getDistrictByState(this.selectedState);
+     
   }
+
+  getDistrictByState(stateid=21){
+    debugger;
+    this.fetchSlots.getDistricts(stateid).subscribe(data=>{            
+        this.districtList=data;
+        if(stateid!=21){
+          console.warn( this.districtList.districts[0].district_id);
+          this.selectedDist=this.districtList.districts[0].district_id;
+        }
+        else{
+          this.selectedDist="392";
+        }
+    });     
+
+    this.fetchSlots.getSpecData(this.selectedDist).subscribe(data=>{
+      //console.warn(data);
+      this.slots=this.ReturnNonZeroes(data);        
+      this.empty=this.ReturnEmpty(data);    
+      this.slots= this.slots.sort((a:any,b:any)=>a.center_id>b.center_id?1:-1)              
+      //this.slot=this.alldata.sessions
+    });
+  }
+
   onSubmit(formData:any) {
     //debugger;
     var slotDate = formData['slotDate'];    
@@ -101,6 +119,11 @@ export class AppComponent implements AfterViewChecked{
         this.slots= this.slots.sort((a:any,b:any)=>a.center_id>b.center_id?1:-1)      
         this.empty= this.empty.sort((a:any,b:any)=>a.center_id>b.center_id?1:-1)      
       }); 
+    }
+
+    stateChange(){
+      console.warn(this.selectedState);
+      this.getDistrictByState(this.selectedState);
     }
 
     isActive(){      
