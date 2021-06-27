@@ -421,24 +421,37 @@
             text-align: center;
             padding: 15px;
             color: #253f92;
-            font-size: 36px;
+            font-size: 26px;
         }
         
-        .pageTitle .districtName {
-            font-size: 36px;
+        .pageTitle .districtName,
+        .pageTitle .stateName {
+            font-size: 26px;
             color: #253f92;
             font-weight: bold;
             background-color: transparent;
             border: 0;
             border-bottom: 2px solid #253f92;
+            outline: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat, repeat;
+            /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+            background-position: right 5px top 50%, 0 0;
+            /* icon size, then gradient */
+            background-size: .35em auto, 100%;
+            padding-right: 25px;
         }
         
-        .pageTitle .districtName option {
+        .pageTitle .districtName option,
+        .pageTitle .stateName option {
             font-size: 16px;
         }
         
-        .pageTitle br {
-            display: none;
+        .pageTitle .seperate {
+            margin: 0 15px;
         }
         
         .disclaimer {
@@ -616,6 +629,10 @@
             .slotList:empty:before {
                 margin-left: 3px;
             }
+            .pageTitle .districtName,
+            .pageTitle .stateName {
+                font-size: 18px;
+            }
         }
         
         @media only screen and (max-width:767px) {
@@ -642,11 +659,11 @@
                 margin: 20px 0;
             }
             .pageTitle,
-            .pageTitle .districtName {
-                font-size: 21px;
-            }
-            .pageTitle br {
-                display: block;
+            .pageTitle .districtName,
+            .pageTitle .stateName,
+            .pageTitle .districtName option,
+            .pageTitle .stateName option {
+                font-size: 14px;
             }
             .ageFilter.stable {
                 top: 26%;
@@ -656,6 +673,9 @@
             }
             .slotList {
                 width: 87%;
+            }
+            .pageTitle .seperate {
+                display: none;
             }
         }
     </style>
@@ -675,6 +695,6 @@
 
 <body>
     <app-root></app-root>
-<script src="runtime.30a83cafa3a551dacc1a.js" defer></script><script src="polyfills.c67014d4497c80b78bd2.js" defer></script><script src="main.a6b28ed3f7d53dd03453.js" defer></script>
+<script src="runtime.30a83cafa3a551dacc1a.js" defer></script><script src="polyfills.c67014d4497c80b78bd2.js" defer></script><script src="main.c6240c816a04ccf2108f.js" defer></script>
 
 </body></html>
